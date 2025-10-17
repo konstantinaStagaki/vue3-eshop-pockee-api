@@ -29,7 +29,7 @@
 }
 
 .site-header {
-  background: #fff;
+  background: transparent;
   border-bottom: 1px solid #e5e7eb;
 }
 
@@ -46,10 +46,15 @@
   max-width: none;
   margin: 0;  
   padding: 0; 
+  background: transparent;
 }
 
 a.router-link-active {
   font-weight: 600;
-  text-decoration: underline;
+  text-decoration: none;
+}
+.nav a:hover {
+  opacity: 0.8;
+  text-decoration: none;
 }
 </style>

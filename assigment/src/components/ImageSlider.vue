@@ -5,7 +5,7 @@
     <Carousel
       :items-to-show="1"
       :wrap-around="true"
-      :autoplay="4500"
+      :autoplay="5500"
       :pause-autoplay-on-hover="true"
       :mouse-drag="true"
       :touch-drag="true"
@@ -48,9 +48,11 @@ const images = [
 
 .slide-image {
   width: 100%;
-  aspect-ratio: 16 / 7;   
+  height: clamp(340px, 58vh, 680px); 
   object-fit: cover;
   display: block;
+  border-radius: 28px;               
+  background: transparent;
 }
 
 :deep(.carousel__prev), :deep(.carousel__next) {
@@ -59,10 +61,10 @@ const images = [
   border-radius: 9999px;
   box-shadow: 0 2px 8px rgba(0,0,0,.12);
 }
-
-
 :deep(.carousel__prev) { left: 12px; }
 :deep(.carousel__next) { right: 12px; }
+
+:deep(.carousel__pagination) { bottom: 8px; }
 
 /* bullets */
 :deep(.carousel__pagination-button::after) {

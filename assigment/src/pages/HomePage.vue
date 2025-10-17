@@ -8,18 +8,22 @@
 
     
     <section class="info-wrap">
-      <header class="home-header" aria-labelledby="home-title">
-        <h1 id="home-title" class="home-title">Welcome</h1>
-        <p class="home-subtitle">
-          This demo shows a simple homepage with personal information and an image slider.
-        </p>
-      </header>
-
+      
       <PersonalInfoCard
         firstName="Konstantina"
         lastName="Stagaki"
         email="konstantinastagake@gmail.com"
         mobile="+30 6943156226"
+        about="I love building clean, efficient code
+                and finding smart solutions to
+                complex problems. I stay curious
+                and keep up with emerging
+                technologies to deliver products
+                that are both innovative and user-
+                focused. My work reflects a hands-
+                on approach and a genuine passion
+                for creating great digital
+                experiences."
       />
     </section>
   </main>
@@ -35,35 +39,35 @@ import PersonalInfoCard from '@/components/PersonalInfoCard.vue'
   padding: 16px;
 }
 
-/* --- HERO WRAPPER (background + rounded corners) --- */
-.hero {
-  /* διαλέγουμε ένα φρέσκο lime/green gradient όπως το δείγμα */
-  --c1: #d9f99d; /* light lime */
-  --c2: #a3e635; /* lime-500 */
-  --c3: #052e16; /* deep green accents */
 
-  background: radial-gradient(120% 120% at 100% 0%, var(--c1) 0%, var(--c2) 60%, var(--c3) 130%);
-  border-radius: 28px;           /* μεγάλες γωνίες όπως στο mock */
-  padding: 18px;                 /* “κάσα” γύρω από το carousel */
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
-  overflow: hidden;              /* κρύβει τυχόν προεξοχές των βελών */
+.hero {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: clamp(12px, 3vw, 28px) 0;  /* κάθετο spacing μόνο */
+  background: transparent;
 }
 
-/* για μεγάλα πλάτη να φαίνεται πιο “ηρωικό” */
+
 @media (min-width: 768px) {
   .hero { padding: 24px; border-radius: 34px; }
 }
 
 .hero-inner {
-  border-radius: 20px;           /* ίδιες γωνίες με την εικόνα μέσα */
-  overflow: hidden;              /* ώστε οι εικόνες να “κόβονται” στις γωνίες */
+  width: min(1200px, 92vw);
+  margin-inline: auto;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: none;              
 }
 
-/* Τίτλος & κείμενο πληροφοριών */
 .info-wrap {
-  max-width: 960px;
-  margin: 24px auto 0;
+  max-width: 1100px;
+  margin: 24px auto 48px;
+  padding: 0 16px;
+  background: transparent;  
 }
+
 
 .home-header {
   margin: 0 0 12px;
