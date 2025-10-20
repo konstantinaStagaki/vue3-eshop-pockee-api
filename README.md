@@ -16,14 +16,15 @@ The goal is to demonstrate the use of Vue.js fundamentals (components, routing, 
 ## Features
 
 ### Homepage
-- Displays personal information (name, email, mobile number)
+- Displays personal information (name, email, mobile number) and About/Contact section.
 - Includes an image slider using a Vue 3-compatible plugin
 
 ### Product List Page
 - Fetches data from:  
   `https://v8api.pockee.com/api/v8/public/products?assortment_id=14&in_stock=true`
-- Displays product image, title, and price
-- Supports adding items to the cart
+- Product list page that shows:
+-Image, brand/title, current price, and (if available) compare price with a discount badge.
+- Add to cart button
 
 ### Cart Popup
 - Accessible from a header button on all pages
@@ -35,6 +36,39 @@ The goal is to demonstrate the use of Vue.js fundamentals (components, routing, 
 - Fully responsive layout
 - Pure CSS, no frameworks or prebuilt themes
 
+---
+### Project structure
+``` bash
+assigment/
+  src/
+    api/
+      client.js           # axios instance
+      products.js         # products API wrapper
+    components/
+      CartPopup.vue       # cart modal (reads/writes Vuex cart)
+      HeaderBar.vue       # site header + cart toggle
+      ImageSlider.vue     # home page slider
+      PersonalInfoCard.vue
+    pages/
+      HomePage.vue
+      ProductListPage.vue
+    router/
+      index.js            # createWebHashHistory()
+    store/
+      index.js            # root store
+      modules/
+        cart.js           # cart logic
+        products.js       # load & normalize products
+    styles/
+      base.css
+    App.vue
+    main.js
+server/
+  public/
+    api/
+      products.php        # PHP proxy to Pockee API
+
+```
 ---
 
 ## Tech Stack
@@ -54,26 +88,23 @@ The goal is to demonstrate the use of Vue.js fundamentals (components, routing, 
 - npm (>=9)
 - Vue CLI (optional, recommended)
 
-### Installation
-
+### Getting Started
+1.Install deps
 ```bash
-git clone https://github.com/konstantinaStagaki/vue3-eshop-pockee-api.git
-cd vue3-eshop-pockee-api
+cd assigment
 npm install
 ```
-
-## Environment
-
-Create a .env file with:
+2.Install deps
 ```bash
-VUE_APP_API_BASE=https://v8api.pockee.com
+cd server/public
+php -S 127.0.0.1:8081
 ```
-The application will use this base URL for API requests.
-
-## Run Development Server
+3.Run the Vue dev server
 ```bash
 npm run serve
 ```
+- Frontend: http://localhost:8080/#/
+
 ## Build for Production
 ```bash
 npm run build

@@ -1,22 +1,17 @@
+
 <template>
   <div id="app">
-
-    <header class="site-header">
-      <nav class="nav">
-        <router-link to="/">Home</router-link>
-        <router-link to="/products">Products</router-link>
-      </nav>
-    </header>
-
-
-    <main class="site-main">
-      <router-view />
-    </main>
+    <HeaderBar @toggle-cart="show=!show" />
+    <main class="site-main"><router-view /></main>
+    <CartPopup :open="show" @close="show=false" />
   </div>
 </template>
 
 <script setup>
-
+import { ref } from 'vue';
+import HeaderBar from '@/components/HeaderBar.vue';
+import CartPopup from '@/components/CartPopup.vue';
+const show = ref(false);
 </script>
 
 <style>
@@ -41,13 +36,6 @@
   gap: 16px;
 }
 
-.site-main {
-  width: 100%;
-  max-width: none;
-  margin: 0;  
-  padding: 0; 
-  background: transparent;
-}
 
 a.router-link-active {
   font-weight: 600;

@@ -1,15 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
+import ProductListPage from '@/pages/ProductListPage.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomePage },
-  // { path: '/products', name: 'products', component: () => import('@/pages/ProductListPage.vue') }
+  { path: '/products', name: 'products', component: ProductListPage }
 ]
 
 const router = createRouter({
-  // Vue CLI: process.env.BASE_URL ; Vite would use import.meta.env.BASE_URL
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+  history: createWebHashHistory(),
+  routes,
+  scrollBehavior() { return { top: 0 } } // keep UX tidy when navigating
 })
 
 export default router

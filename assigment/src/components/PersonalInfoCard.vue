@@ -44,13 +44,6 @@
         <div ref="statsRef" class="stats" role="list" aria-label="Personal interests timeline">
         <!-- Knitting -->
         <div class="stat" role="listitem">
-          <div class="stat-icon" aria-hidden="true">
-            <!-- yarn ball -->
-            <svg viewBox="0 0 24 24" class="svg">
-              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z"/>
-              <path d="M5 9c3-3 8-3 11 0M4 13c4-4 10-4 14 0M7 16c3-3 7-3 10 0" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
           <div class="stat-body">
             <div class="stat-row">
               <div class="stat-num">{{ n1 }}</div>
@@ -62,13 +55,6 @@
 
         <!-- Clay -->
         <div class="stat" role="listitem">
-          <div class="stat-icon" aria-hidden="true">
-            <!-- clay pot -->
-            <svg viewBox="0 0 24 24" class="svg">
-              <path d="M8 3h8c0 2-2 3-2 4s1 2 1 4a7 7 0 0 1-14 0c0-2 1-3 1-4S8 5 8 3Z"/>
-              <path d="M4 15h16" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
           <div class="stat-body">
             <div class="stat-row">
               <div class="stat-num">{{ n2 }}</div>
@@ -80,14 +66,6 @@
 
         <!-- Motocross -->
         <div class="stat" role="listitem">
-          <div class="stat-icon" aria-hidden="true">
-            <!-- motorcycle -->
-            <svg viewBox="0 0 24 24" class="svg">
-              <path d="M5 17a3 3 0 1 1 2.83-4h3.34A3 3 0 1 1 15 17H9"/>
-              <path d="M14 7h3l3 3h-4l-2-3Z" />
-              <path d="M12 10l2-3M3 10h4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
           <div class="stat-body">
             <div class="stat-row">
               <div class="stat-num">{{ n3 }}</div>
@@ -146,14 +124,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* ===== Layout wrapper: ίσο ύψος columns ===== */
+
 .segment {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
   padding: 16px;
   border-radius: 16px;
-  align-items: stretch;           /* <-- κάνει τα δύο columns ίσου ύψους */
+  align-items: stretch;          
   background: transparent;
 }
 @media (min-width: 960px) {
@@ -191,7 +169,6 @@ onMounted(() => {
   box-shadow: 0 4px 10px rgba(85,107,47,.18);
 }
 .svg { width: 22px; height: 22px; fill: var(--olive); }
-
 .value { font-weight: 600; color: #0f172a; word-break: break-word; }
 .link { color: #0f172a; text-decoration: none; }
 
@@ -209,7 +186,7 @@ onMounted(() => {
 
 /* ===== Stats row ===== */
 .stats {
-  margin-top: auto;                       /* “κολλάει” τα stats χαμηλά για ίσο ύψος */
+  margin-top: auto;                       
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 16px;
@@ -225,13 +202,29 @@ onMounted(() => {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
-  padding: 14px;
+  padding: 30px;
   box-shadow: 0 4px 14px rgba(0,0,0,.06);
 }
-.stat-body { display: grid; gap: 2px; }
-.stat-row { display: flex; align-items: baseline; gap: 6px; }
+.stat-body{
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+.stat-row{
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0; /* no extra spacing */
+}
 .stat-num { font-weight: 800; font-size: 1.25rem; color: #0f172a; line-height: 1.2; min-width: 2ch; text-align: right; }
 .stat-unit { color: #334155; font-size: .9rem; }
-.stat-caption { color: #6b7280; font-size: .95rem; }
+.stat-caption{
+  display: inline;
+  white-space: nowrap;       /* avoid wrapping "of knitting" */
+  color: #6b7280;
+  font-size: .95rem;
+}
+
 </style>
 
